@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Kiiway</title>
+        <link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+        <style>
+            body {
+                margin: 50px 0 0 0;
+                padding: 0;
+                width: 100%;
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                text-align: center;
+                color: #aaa;
+                font-size: 18px;
+            }
+
+            h1 {
+                color: #3393e3;
+                letter-spacing: -3px;
+                font-family: 'Lato', sans-serif;
+                font-size: 100px;
+                font-weight: 200;
+                margin-bottom: 0;
+            }
+            
+            form{
+                width: 25%;
+                margin: 0 auto;
+            }
+
+            .divider{
+                border-bottom: 1px solid #cacaca;
+                margin: 20px 0;
+                width: 10%;
+                display: inline-block;
+            }
+            
+            .alert{
+                border-radius: 10px;
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+
+            .alert-error{
+                background-color: #f2dede;
+                color: #a94442;
+                border-color #a94442: 
+            }
+            
+            .alert p{
+                padding:0;
+                margin: 0;
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Kiiway</h1>
+        <div class="divider"></div>
+        <div>Micro web application to interact with gpio on a RaspberryPI</div>
+        <div class="divider"></div>
+        <form action="/gpio/write" method="GET">
+            <?php foreach($errors as $error): ?>
+                <div class="alert alert-error">
+                    <strong>Erreur : </strong>
+                    <p>
+                        <?= $error ?>
+                    </p>
+                </div>
+            <?php endforeach; ?>
+            <input type="text" name="gpio_pin" placeholder="Numéro du PIN">
+            <select name="gpio_state" id="">
+                <option disabled selected> Etat</option>
+                <option value="1">On</option>
+                <option value="0">Off</option>
+            </select>
+            <button type="submit"> Modifier</button>
+        </form>
+        <div class="divider"></div>
+        <form action="/gpio/read" method="GET">
+            <input type="text" name="gpio_pin" placeholder="Numéro du PIN">
+            <button type="submit"> Lire</button>
+        </form>
+    </body>
+</html>
