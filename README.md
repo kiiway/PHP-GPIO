@@ -1,8 +1,6 @@
+ Launch the web application
 
-
-# Launch the web application
-
-Place you in the app folder
+Go to you in the app folder
 ```bash
 cd /your/folder/location
 ```
